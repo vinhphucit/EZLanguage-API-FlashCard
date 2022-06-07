@@ -13,7 +13,7 @@ import { ReqFormaterMiddleware } from "./base/middlewares/ReqFormaterMiddleware"
 import { SwaggerRouter } from "./v1/routers/SwaggerRouter";
 import { HealthCheckRouter } from "./v1/routers/HealthCheckRouter";
 import { NotFoundRouter } from "./v1/routers/NotFoundRouter";
-import { FlashCardRouter } from "./v1/routers/FlashCardRouter";
+// import { FlashCardRouter } from "./v1/routers/FlashCardRouter";
 
 export class App {
   public app: Application = express();
