@@ -2,12 +2,12 @@ import { Service } from "typedi";
 import {NextFunction, Request, Response} from "express";
 import { SuccessResponse } from "../../base/models/dto/response/success/SuccessResponse";
 import { FlashCardService } from "../services/FlashCardService";
-import { CreateFlashCardRequest } from "../models/dto/request/FlashCard/CreateFlashCardRequest";
-import { CreateFlashCardResponse } from "../models/dto/response/FlashCard/CreateFlashCardResponse";
-import { GetFlashCardsResponse } from "../models/dto/response/FlashCard/GetFlashCardsResponse";
-import { GetFlashCardByIdResponse } from "../models/dto/response/FlashCard/GetFlashCardByIdResponse";
+import { CreateFlashCardRequest } from "../models/dto/request/flashCard/CreateFlashCardRequest";
+import { CreateFlashCardResponse } from "../models/dto/response/flashCard/CreateFlashCardResponse";
+import { GetFlashCardsResponse } from "../models/dto/response/flashCard/GetFlashCardsResponse";
+import { GetFlashCardByIdResponse } from "../models/dto/response/flashCard/GetFlashCardByIdResponse";
 import { NoContentResponse } from "../../base/models/dto/response/success/NoContentResponse";
-import { UpdateFlashCardByIdResponse } from "../models/dto/response/FlashCard/UpdateFlashCardByIdResponse";
+import { UpdateFlashCardByIdResponse } from "../models/dto/response/flashCard/UpdateFlashCardByIdResponse";
 @Service()
 export class FlashCardController {
     constructor(private readonly service: FlashCardService){
