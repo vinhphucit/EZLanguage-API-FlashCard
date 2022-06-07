@@ -47,7 +47,7 @@ export class App {
     this.routes.push(
       new SwaggerRouter(this.app),
       new HealthCheckRouter(this.app),
-      new FlashCardRouter(this.app),
+      // new FlashCardRouter(this.app),
       new NotFoundRouter(this.app)
     );
   }
