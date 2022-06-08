@@ -14,7 +14,7 @@
             "url": "http://localhost:3000/flashcard/"
         },
         {
-            "url": "https://ez-lang-alpha.herokuapp.com/flashcard/"
+            "url": "https://ez-lang-flashcard.herokuapp.com/flashcard/"
         }
     ],
     "tags": [
