@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "FlashCard",
+    "title": "EZ-Lang-FlashCard",
     "version": "1.0.0",
     "description": "REST API designed to provide flashcard functions for ez language",
     "contact": {

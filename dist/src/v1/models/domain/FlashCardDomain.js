@@ -8,6 +8,7 @@ class FlashCardDomain {
         this.id = result._id;
         this.title = result.title;
         this.description = result.description;
+        this.userId = result.userId;
         this.createdAt = result.createdAt;
         this.updatedAt = result.updatedAt;
     }

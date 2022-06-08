@@ -42,15 +42,17 @@ const jsonwebtoken = __importStar(require("jsonwebtoken"));
 class JwtUtils {
     static verifyJwtToken(token) {
         return __awaiter(this, void 0, void 0, function* () {
-            return new Promise((resolve, reject) => jsonwebtoken.verify(token, JwtUtils.publicKey, (err, data) => {
-                if (err) {
-                    return reject(err);
-                }
-                return resolve(data);
-            }));
+            return new Promise((resolve, reject) => {
+                jsonwebtoken.verify(token, JwtUtils.publicKey, { algorithms: ["RS256"] }, (err, data) => {
+                    if (err) {
+                        return reject(err);
+                    }
+                    return resolve(data);
+                });
+            });
         });
     }
 }
 exports.JwtUtils = JwtUtils;
-JwtUtils.publicKey = fs_1.default.readFileSync(path_1.default.resolve(__dirname, '../../../../assets/public.key'), 'utf8');
+JwtUtils.publicKey = fs_1.default.readFileSync(path_1.default.resolve(__dirname, "../../../../assets/public.key"), "utf8");
 //# sourceMappingURL=JwtUtils.js.map

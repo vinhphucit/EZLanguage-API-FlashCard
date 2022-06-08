@@ -5,6 +5,7 @@ import { CollectionNames } from "./CollectionNames";
 export interface IFlashCard extends Document {
   title: string;
   description: string;
+  userId: string;
   imageUrls: KeyValue[];
   soundUrls: KeyValue[];
   references: KeyValue[];
@@ -29,6 +30,7 @@ export const FlashCardSchema = new Schema<IFlashCard>(
   {
     title: String,
     description: String,
+    userId: String,
     imageUrls: [KeyValueSchema],
     soundUrls: [KeyValueSchema],
     references: [KeyValueSchema],

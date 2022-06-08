@@ -1,1 +1,1 @@
-{"version":3,"file":"GetFlashCardsResponse.js","sourceRoot":"","sources":["../../../../../../../src/v1/models/dto/response/FlashCard/GetFlashCardsResponse.ts"],"names":[],"mappings":";;;AACA,+FAA4F;AAG5F,MAAa,qBAAsB,SAAQ,mCAA0C;CAEpF;AAFD,sDAEC"}
+{"version":3,"file":"GetFlashCardsResponse.js","sourceRoot":"","sources":["../../../../../../../src/v1/models/dto/response/flashCard/GetFlashCardsResponse.ts"],"names":[],"mappings":";;;AACA,+FAA4F;AAG5F,MAAa,qBAAsB,SAAQ,mCAA0C;CAEpF;AAFD,sDAEC"}

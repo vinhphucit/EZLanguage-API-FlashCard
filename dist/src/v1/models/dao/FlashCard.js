@@ -16,6 +16,7 @@ exports.KeyValueSchema = new mongoose_1.Schema({
 exports.FlashCardSchema = new mongoose_1.Schema({
     title: String,
     description: String,
+    userId: String,
     imageUrls: [exports.KeyValueSchema],
     soundUrls: [exports.KeyValueSchema],
     references: [exports.KeyValueSchema],

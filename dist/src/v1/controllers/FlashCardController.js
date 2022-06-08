@@ -22,11 +22,11 @@ exports.FlashCardController = void 0;
 const typedi_1 = require("typedi");
 const SuccessResponse_1 = require("../../base/models/dto/response/success/SuccessResponse");
 const FlashCardService_1 = require("../services/FlashCardService");
-const CreateFlashCardResponse_1 = require("../models/dto/response/FlashCard/CreateFlashCardResponse");
-const GetFlashCardsResponse_1 = require("../models/dto/response/FlashCard/GetFlashCardsResponse");
-const GetFlashCardByIdResponse_1 = require("../models/dto/response/FlashCard/GetFlashCardByIdResponse");
+const CreateFlashCardResponse_1 = require("../models/dto/response/flashCard/CreateFlashCardResponse");
+const GetFlashCardsResponse_1 = require("../models/dto/response/flashCard/GetFlashCardsResponse");
+const GetFlashCardByIdResponse_1 = require("../models/dto/response/flashCard/GetFlashCardByIdResponse");
 const NoContentResponse_1 = require("../../base/models/dto/response/success/NoContentResponse");
-const UpdateFlashCardByIdResponse_1 = require("../models/dto/response/FlashCard/UpdateFlashCardByIdResponse");
+const UpdateFlashCardByIdResponse_1 = require("../models/dto/response/flashCard/UpdateFlashCardByIdResponse");
 let FlashCardController = class FlashCardController {
     constructor(service) {
         this.service = service;
