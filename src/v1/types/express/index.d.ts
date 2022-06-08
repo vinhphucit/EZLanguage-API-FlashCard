@@ -25,7 +25,7 @@ declare interface JwtPayload {
   /**
    * Permissions
    */
-  permissions: string;  
+  permissions: string[];  
 
   /**
    * Time issued (miliseconds)
