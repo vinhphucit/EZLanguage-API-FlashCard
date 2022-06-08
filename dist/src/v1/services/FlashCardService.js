@@ -27,40 +27,43 @@ let FlashCardService = class FlashCardService {
     constructor(repo) {
         this.repo = repo;
     }
-    create(flashCard) {
+    create(flashCard, userId) {
         return __awaiter(this, void 0, void 0, function* () {
             let item = {
                 title: flashCard.title,
                 description: flashCard.description,
+                userId: userId,
             };
             return this.repo.create(item);
         });
     }
-    get(limit, start, sort, query) {
+    get(limit, start, sort, query, userId) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.repo.get(limit, start, sort, query);
+            return yield this.repo.get(limit, start, sort, query, userId ? [`userId%eq%${userId}`] : null);
         });
     }
-    getById(id) {
+    getById(id, userId) {
         return __awaiter(this, void 0, void 0, function* () {
             const result = yield this.repo.getById(id);
             if (!result)
                 throw new NotFoundException_1.NotFoundException(`FlashCard ${id} doesn't exist`);
+            if (userId && result.userId != userId)
+                throw new NotFoundException_1.NotFoundException();
             return result;
         });
     }
-    updateById(id, request) {
+    updateById(id, request, userId) {
         return __awaiter(this, void 0, void 0, function* () {
-            const entity = yield this.getById(id);
+            const entity = yield this.getById(id, userId);
             entity.title = (0, StringUtils_1.switchNull)(request.title, entity.title);
             entity.description = (0, StringUtils_1.switchNull)(request.description, entity.description);
             const updateEntity = yield this.repo.updateById(id, entity);
             return updateEntity;
         });
     }
-    deleteById(id) {
+    deleteById(id, userId) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield this.getById(id);
+            yield this.getById(id, userId);
             return this.repo.removeById(id);
         });
     }

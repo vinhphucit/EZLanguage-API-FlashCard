@@ -14,12 +14,13 @@ export class FlashCardService {
   constructor(private readonly repo: FlashCardRepository) {}
 
   public async create(
-    flashCard: CreateFlashCardRequest
+    flashCard: CreateFlashCardRequest,
+    userId?: string
   ): Promise<IFlashCard> {
-
     let item: Partial<IFlashCard> = {
       title: flashCard.title,
       description: flashCard.description,
+      userId: userId,
     };
     return this.repo.create(item);
   }
@@ -28,22 +29,31 @@ export class FlashCardService {
     limit: string,
     start: string,
     sort: string,
-    query: string
+    query: string,
+    userId?: string
   ): Promise<BaseList<IFlashCard>> {
-    return await this.repo.get(limit, start, sort, query);
+    return await this.repo.get(
+      limit,
+      start,
+      sort,
+      query,
+      userId ? [`userId%eq%${userId}`] : null
+    );
   }
 
-  async getById(id: string): Promise<IFlashCard> {
+  async getById(id: string, userId?: string): Promise<IFlashCard> {
     const result = await this.repo.getById(id);
     if (!result) throw new NotFoundException(`FlashCard ${id} doesn't exist`);
+    if (userId && result.userId != userId) throw new NotFoundException();
     return result;
   }
-  
+
   async updateById(
     id: string,
-    request: UpdateFlashCardRequest
+    request: UpdateFlashCardRequest,
+    userId?: string
   ): Promise<IFlashCard | undefined> {
-    const entity = await this.getById(id);
+    const entity = await this.getById(id, userId);
 
     entity.title = switchNull(request.title, entity.title);
     entity.description = switchNull(request.description, entity.description);
@@ -53,8 +63,8 @@ export class FlashCardService {
     return updateEntity;
   }
 
-  async deleteById(id: string): Promise<IFlashCard> {
-    await this.getById(id);
+  async deleteById(id: string, userId?: string): Promise<IFlashCard> {
+    await this.getById(id, userId);
     return this.repo.removeById(id);
   }
 }

@@ -8,6 +8,7 @@ import { GetFlashCardsResponse } from "../models/dto/response/flashCard/GetFlash
 import { GetFlashCardByIdResponse } from "../models/dto/response/flashCard/GetFlashCardByIdResponse";
 import { NoContentResponse } from "../../base/models/dto/response/success/NoContentResponse";
 import { UpdateFlashCardByIdResponse } from "../models/dto/response/flashCard/UpdateFlashCardByIdResponse";
+import { getRequestUserId } from "../utils/RequestUtils";
 @Service()
 export class FlashCardController {
     constructor(private readonly service: FlashCardService){
@@ -16,7 +17,8 @@ export class FlashCardController {
     public async create(req: Request, res: Response, next: NextFunction) {
         try {            
             const request: CreateFlashCardRequest = req.body;
-            const result = await this.service.create(request)
+            const userId = getRequestUserId(req);
+            const result = await this.service.create(request, userId)
             next(new SuccessResponse(new CreateFlashCardResponse(result)));
         } catch (e) {
             return next(e)
@@ -26,7 +28,8 @@ export class FlashCardController {
     public async get(req: Request, res: Response, next: NextFunction) {
         try {            
             const {limit, start, sort, query} = req.query as any;
-            const result = await this.service.get(limit, start, sort, query)
+            const userId = getRequestUserId(req);
+            const result = await this.service.get(limit, start, sort, query, userId)
             next(new SuccessResponse(new GetFlashCardsResponse(result.items.map(value => new GetFlashCardByIdResponse(value)), result.start, result.limit, result.totalItems, result.sort, result.query)))
         } catch (e) {
             return next(e)
@@ -36,7 +39,8 @@ export class FlashCardController {
     public async getById(req: Request, res: Response, next: NextFunction) {
         try {
             const id = req.params.id;            
-            const result = await this.service.getById(id)
+            const userId = getRequestUserId(req);
+            const result = await this.service.getById(id,userId)
             next(new SuccessResponse(new GetFlashCardByIdResponse(result)))
         } catch (e) {
             return next(e)
@@ -45,8 +49,9 @@ export class FlashCardController {
     public async updateById(req: Request, res: Response, next: NextFunction) {
         try {
             const id = req.params.id;
-            const request = req.body;            
-            const result = await this.service.updateById(id, request)
+            const request = req.body;          
+            const userId = getRequestUserId(req);  
+            const result = await this.service.updateById(id, request,userId)
             next(new SuccessResponse(new UpdateFlashCardByIdResponse(result)))
         } catch (e) {
             return next(e)
@@ -56,7 +61,8 @@ export class FlashCardController {
     public async deleteById(req: Request, res: Response, next: NextFunction) {
         try {            
             const id = req.params.id;
-            await this.service.deleteById(id);
+            const userId = getRequestUserId(req);
+            await this.service.deleteById(id,userId);
             next(new NoContentResponse())
         } catch (e) {
             return next(e)

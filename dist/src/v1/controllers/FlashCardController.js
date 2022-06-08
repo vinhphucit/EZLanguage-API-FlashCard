@@ -27,6 +27,7 @@ const GetFlashCardsResponse_1 = require("../models/dto/response/flashCard/GetFla
 const GetFlashCardByIdResponse_1 = require("../models/dto/response/flashCard/GetFlashCardByIdResponse");
 const NoContentResponse_1 = require("../../base/models/dto/response/success/NoContentResponse");
 const UpdateFlashCardByIdResponse_1 = require("../models/dto/response/flashCard/UpdateFlashCardByIdResponse");
+const RequestUtils_1 = require("../utils/RequestUtils");
 let FlashCardController = class FlashCardController {
     constructor(service) {
         this.service = service;
@@ -35,7 +36,8 @@ let FlashCardController = class FlashCardController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const request = req.body;
-                const result = yield this.service.create(request);
+                const userId = (0, RequestUtils_1.getRequestUserId)(req);
+                const result = yield this.service.create(request, userId);
                 next(new SuccessResponse_1.SuccessResponse(new CreateFlashCardResponse_1.CreateFlashCardResponse(result)));
             }
             catch (e) {
@@ -47,7 +49,8 @@ let FlashCardController = class FlashCardController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { limit, start, sort, query } = req.query;
-                const result = yield this.service.get(limit, start, sort, query);
+                const userId = (0, RequestUtils_1.getRequestUserId)(req);
+                const result = yield this.service.get(limit, start, sort, query, userId);
                 next(new SuccessResponse_1.SuccessResponse(new GetFlashCardsResponse_1.GetFlashCardsResponse(result.items.map(value => new GetFlashCardByIdResponse_1.GetFlashCardByIdResponse(value)), result.start, result.limit, result.totalItems, result.sort, result.query)));
             }
             catch (e) {
@@ -59,7 +62,8 @@ let FlashCardController = class FlashCardController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const id = req.params.id;
-                const result = yield this.service.getById(id);
+                const userId = (0, RequestUtils_1.getRequestUserId)(req);
+                const result = yield this.service.getById(id, userId);
                 next(new SuccessResponse_1.SuccessResponse(new GetFlashCardByIdResponse_1.GetFlashCardByIdResponse(result)));
             }
             catch (e) {
@@ -72,7 +76,8 @@ let FlashCardController = class FlashCardController {
             try {
                 const id = req.params.id;
                 const request = req.body;
-                const result = yield this.service.updateById(id, request);
+                const userId = (0, RequestUtils_1.getRequestUserId)(req);
+                const result = yield this.service.updateById(id, request, userId);
                 next(new SuccessResponse_1.SuccessResponse(new UpdateFlashCardByIdResponse_1.UpdateFlashCardByIdResponse(result)));
             }
             catch (e) {
@@ -84,7 +89,8 @@ let FlashCardController = class FlashCardController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const id = req.params.id;
-                yield this.service.deleteById(id);
+                const userId = (0, RequestUtils_1.getRequestUserId)(req);
+                yield this.service.deleteById(id, userId);
                 next(new NoContentResponse_1.NoContentResponse());
             }
             catch (e) {
