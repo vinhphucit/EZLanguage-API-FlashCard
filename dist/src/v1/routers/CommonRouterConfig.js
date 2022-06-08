@@ -12,6 +12,7 @@ class CommonRoutesConfig {
         if (path == null) {
             path = name;
         }
+        this.path = path;
         this.configureRoutes();
         this.app.use(`${(0, StringUtils_1.standardizePath)(Env_1.env.app.rootPath)}/${path}`, this.router);
     }

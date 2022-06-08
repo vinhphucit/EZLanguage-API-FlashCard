@@ -4,7 +4,7 @@ import { HealthCheckController } from "../controllers/HealthCheckController";
 import Container from "typedi";
 export class HealthCheckRouter extends CommonRoutesConfig {
   constructor(app: express.Application) {
-    super(app, "HealthCheckRouter", `health/check`);
+    super(app, "HealthCheck", `health/check`);
   }
 
   configureRoutes() {

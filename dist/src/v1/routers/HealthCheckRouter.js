@@ -9,7 +9,7 @@ const HealthCheckController_1 = require("../controllers/HealthCheckController");
 const typedi_1 = __importDefault(require("typedi"));
 class HealthCheckRouter extends CommonRouterConfig_1.CommonRoutesConfig {
     constructor(app) {
-        super(app, "HealthCheckRouter", `health/check`);
+        super(app, "HealthCheck", `health/check`);
     }
     configureRoutes() {
         const controller = typedi_1.default.get(HealthCheckController_1.HealthCheckController);

@@ -8,6 +8,7 @@ if (process.env.ENV == "test") {
 
 export class CollectionNames {    
     public static FlashCard = "flash_card" + subfix;    
+    public static Category = "category" + subfix;    
 }
 
 

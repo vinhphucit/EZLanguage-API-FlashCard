@@ -9,4 +9,5 @@ class CollectionNames {
 }
 exports.CollectionNames = CollectionNames;
 CollectionNames.FlashCard = "flash_card" + subfix;
+CollectionNames.Category = "category" + subfix;
 //# sourceMappingURL=CollectionNames.js.map

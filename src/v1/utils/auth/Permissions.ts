@@ -5,5 +5,12 @@ export const Permissions = {
         ReadById: "fc:rid",
         UpdateById: "fc:uid",
         DeleteById: "fc:did",
+    },
+    Category: {
+        Create: "ca:c",
+        Read: "ca:r",
+        ReadById: "ca:rid",
+        UpdateById: "ca:uid",
+        DeleteById: "ca:did",
     }
 }

@@ -5,7 +5,7 @@ import { CommonRoutesConfig } from "./CommonRouterConfig";
 import express from "express";
 export class SwaggerRouter extends CommonRoutesConfig {
   constructor(app: express.Application) {
-    super(app, "SwaggerRouter",``);
+    super(app, "Swagger",``);
   }
 
   configureRoutes(): express.Application {

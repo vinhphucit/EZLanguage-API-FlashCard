@@ -42,6 +42,14 @@ let FlashCardService = class FlashCardService {
             return yield this.repo.get(limit, start, sort, query, userId ? [`userId%eq%${userId}`] : null);
         });
     }
+    getByCategoryId(limit, start, sort, query, categoryId, userId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this.repo.get(limit, start, sort, query, [
+                `categoryId%eq%${categoryId}`,
+                userId ? `userId%eq%${userId}` : null,
+            ]);
+        });
+    }
     getById(id, userId) {
         return __awaiter(this, void 0, void 0, function* () {
             const result = yield this.repo.getById(id);

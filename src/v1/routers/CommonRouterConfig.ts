@@ -6,7 +6,7 @@ export abstract class CommonRoutesConfig {
     app: express.Application;
     router: Router = Router();
     name: string;
-
+    path: string
     constructor(app: express.Application, name: string, path:string = null) {
         this.app = app;
         this.name = name;
@@ -14,6 +14,7 @@ export abstract class CommonRoutesConfig {
             path = name;
         }
         
+        this.path = path;
         this.configureRoutes();        
         this.app.use(`${standardizePath(env.app.rootPath)}/${path}`, this.router);
     }

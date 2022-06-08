@@ -40,6 +40,19 @@ export class FlashCardService {
       userId ? [`userId%eq%${userId}`] : null
     );
   }
+  async getByCategoryId(
+    limit: string,
+    start: string,
+    sort: string,
+    query: string,
+    categoryId: string,
+    userId?: string
+  ): Promise<BaseList<IFlashCard>> {
+    return await this.repo.get(limit, start, sort, query, [
+      `categoryId%eq%${categoryId}`,
+      userId ? `userId%eq%${userId}` : null,
+    ]);
+  }
 
   async getById(id: string, userId?: string): Promise<IFlashCard> {
     const result = await this.repo.getById(id);

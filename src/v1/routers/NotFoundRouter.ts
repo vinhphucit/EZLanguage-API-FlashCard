@@ -4,7 +4,7 @@ import express from "express";
 import { NotFoundController } from "../controllers/NotFoundController";
 export class NotFoundRouter extends CommonRoutesConfig {
   constructor(app: express.Application) {
-    super(app, `NotFountRounter`,``);
+    super(app, `NotFound`,``);
   }
 
   configureRoutes() {

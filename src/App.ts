@@ -1,7 +1,7 @@
 import "reflect-metadata";
 
 import * as bodyParser from "body-parser";
-import express, { Application } from "express";
+import express, { Application, Router } from "express";
 import { Server } from "http";
 import { CommonRoutesConfig } from "./v1/routers/CommonRouterConfig";
 import { corsWhitelist } from "./v1/middlewares/CorsMiddleware";
@@ -14,6 +14,7 @@ import { SwaggerRouter } from "./v1/routers/SwaggerRouter";
 import { HealthCheckRouter } from "./v1/routers/HealthCheckRouter";
 import { NotFoundRouter } from "./v1/routers/NotFoundRouter";
 import { FlashCardRouter } from "./v1/routers/FlashCardRouter";
+import { CategoryRouter } from "./v1/routers/CategoryRouter";
 
 export class App {
   public app: Application = express();
@@ -32,7 +33,7 @@ export class App {
   startServerListening() {
     this.server = this.app.listen(env.app.port, (): void => {
       this.routes.forEach((route: CommonRoutesConfig) => {
-        Logger.info(`Routes configured for ${route.getName()}`);
+        Logger.info(`Routes configured for ${route.getName()}`);      
       });
       banner(env.app.name);
     });
@@ -48,6 +49,7 @@ export class App {
       new SwaggerRouter(this.app),
       new HealthCheckRouter(this.app),
       new FlashCardRouter(this.app),
+      new CategoryRouter(this.app),
       new NotFoundRouter(this.app)
     );
   }
