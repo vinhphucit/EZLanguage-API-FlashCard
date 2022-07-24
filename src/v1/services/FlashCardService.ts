@@ -20,6 +20,7 @@ export class FlashCardService {
     let item: Partial<IFlashCard> = {
       title: flashCard.title,
       description: flashCard.description,
+      categoryId: flashCard.categoryId,
       userId: userId,
     };
     return this.repo.create(item);

@@ -26,5 +26,11 @@ __decorate([
     (0, IsNotEmptyString_1.IsNotEmptyString)(),
     __metadata("design:type", String)
 ], CreateFlashCardRequest.prototype, "description", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.Length)(1, 50),
+    (0, IsNotEmptyString_1.IsNotEmptyString)(),
+    __metadata("design:type", String)
+], CreateFlashCardRequest.prototype, "categoryId", void 0);
 exports.CreateFlashCardRequest = CreateFlashCardRequest;
 //# sourceMappingURL=CreateFlashCardRequest.js.map

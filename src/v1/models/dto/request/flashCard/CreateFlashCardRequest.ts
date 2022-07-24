@@ -9,5 +9,9 @@ export class CreateFlashCardRequest {
     @IsString()
     @Length(1, 50)
     @IsNotEmptyString()    
-    public description: string    
+    public description: string
+    @IsString()
+    @Length(1, 50)
+    @IsNotEmptyString()    
+    public categoryId: string    
 }

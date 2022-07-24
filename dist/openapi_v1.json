@@ -608,6 +608,9 @@
                     },
                     "description": {
                         "type": "string"
+                    },
+                    "categoryId": {
+                        "type": "string"
                     }
                 }
             },

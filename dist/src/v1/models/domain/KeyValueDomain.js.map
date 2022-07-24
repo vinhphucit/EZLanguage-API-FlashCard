@@ -1,0 +1,1 @@
+{"version":3,"file":"KeyValueDomain.js","sourceRoot":"","sources":["../../../../../src/v1/models/domain/KeyValueDomain.ts"],"names":[],"mappings":";;;AAEA,MAAa,cAAc;IAKvB,YAAY,MAAiB;QACzB,IAAI,CAAC,MAAM;YAAE,OAAO;QACpB,IAAI,CAAC,GAAG,GAAG,MAAM,CAAC,IAAI,CAAC;QACvB,IAAI,CAAC,KAAK,GAAG,MAAM,CAAC,KAAK,CAAC;IAE9B,CAAC;CACJ;AAXD,wCAWC"}

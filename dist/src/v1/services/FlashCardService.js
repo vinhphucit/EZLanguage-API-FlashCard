@@ -32,6 +32,7 @@ let FlashCardService = class FlashCardService {
             let item = {
                 title: flashCard.title,
                 description: flashCard.description,
+                categoryId: flashCard.categoryId,
                 userId: userId,
             };
             return this.repo.create(item);
