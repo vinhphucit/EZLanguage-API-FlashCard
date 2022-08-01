@@ -6,6 +6,9 @@ import { FlashCardController } from "../controllers/FlashCardController";
 import { Permissions } from "../utils/auth/Permissions";
 import { AuthorizationMiddleware } from "../middlewares/AuthorizationMiddleware";
 import { AuthenticationMiddleware } from "../middlewares/AuthenticationMiddleware";
+import { CreateFlashCardRequest } from "../models/dto/request/flashCard/CreateFlashCardRequest";
+import { ValidationMiddleware } from "../middlewares/ValidationMiddleware";
+import { UpdateFlashCardRequest } from "../models/dto/request/flashCard/UpdateFlashCardRequest";
 
 export class FlashCardRouter extends CommonRoutesConfig {
   constructor(app: express.Application) {
@@ -25,6 +28,7 @@ export class FlashCardRouter extends CommonRoutesConfig {
     this.router.post(
       ``,
       AuthorizationMiddleware(Permissions.FlashCard.Create),
+      ValidationMiddleware(CreateFlashCardRequest),
       controller.create.bind(controller)
     );
     this.router.get(
@@ -35,6 +39,7 @@ export class FlashCardRouter extends CommonRoutesConfig {
     this.router.put(
       `/:id`,
       AuthorizationMiddleware(Permissions.FlashCard.UpdateById),
+      ValidationMiddleware(UpdateFlashCardRequest),
       controller.updateById.bind(controller)
     );
     this.router.delete(

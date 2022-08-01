@@ -28,11 +28,24 @@ let FlashCardService = class FlashCardService {
         this.repo = repo;
     }
     create(flashCard, userId) {
+        var _a, _b, _c;
         return __awaiter(this, void 0, void 0, function* () {
             let item = {
                 title: flashCard.title,
                 description: flashCard.description,
                 categoryId: flashCard.categoryId,
+                imageUrls: (_a = flashCard.imageUrls) === null || _a === void 0 ? void 0 : _a.map((i) => {
+                    const m = { name: i.key, value: i.value };
+                    return m;
+                }),
+                soundUrls: (_b = flashCard.soundUrls) === null || _b === void 0 ? void 0 : _b.map((i) => {
+                    const m = { name: i.key, value: i.value };
+                    return m;
+                }),
+                references: (_c = flashCard.references) === null || _c === void 0 ? void 0 : _c.map((i) => {
+                    const m = { name: i.key, value: i.value };
+                    return m;
+                }),
                 userId: userId,
             };
             return this.repo.create(item);
@@ -62,10 +75,23 @@ let FlashCardService = class FlashCardService {
         });
     }
     updateById(id, request, userId) {
+        var _a, _b, _c;
         return __awaiter(this, void 0, void 0, function* () {
             const entity = yield this.getById(id, userId);
             entity.title = (0, StringUtils_1.switchNull)(request.title, entity.title);
             entity.description = (0, StringUtils_1.switchNull)(request.description, entity.description);
+            entity.imageUrls = (0, StringUtils_1.switchNull)((_a = request.imageUrls) === null || _a === void 0 ? void 0 : _a.map((i) => {
+                const m = { name: i.key, value: i.value };
+                return m;
+            }), entity.imageUrls);
+            entity.soundUrls = (0, StringUtils_1.switchNull)((_b = request.soundUrls) === null || _b === void 0 ? void 0 : _b.map((i) => {
+                const m = { name: i.key, value: i.value };
+                return m;
+            }), entity.soundUrls);
+            entity.references = (0, StringUtils_1.switchNull)((_c = request.references) === null || _c === void 0 ? void 0 : _c.map((i) => {
+                const m = { name: i.key, value: i.value };
+                return m;
+            }), entity.references);
             const updateEntity = yield this.repo.updateById(id, entity);
             return updateEntity;
         });

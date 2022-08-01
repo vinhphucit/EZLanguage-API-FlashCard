@@ -6,6 +6,9 @@ import { CategoryController } from "../controllers/CategoryController";
 import { Permissions } from "../utils/auth/Permissions";
 import { AuthorizationMiddleware } from "../middlewares/AuthorizationMiddleware";
 import { AuthenticationMiddleware } from "../middlewares/AuthenticationMiddleware";
+import { ValidationMiddleware } from "../middlewares/ValidationMiddleware";
+import { CreateCategoryRequest } from "../models/dto/request/category/CreateCategoryRequest";
+import { UpdateCategoryRequest } from "../models/dto/request/category/UpdateCategoryRequest";
 
 export class CategoryRouter extends CommonRoutesConfig {
   constructor(app: express.Application) {
@@ -20,22 +23,24 @@ export class CategoryRouter extends CommonRoutesConfig {
     this.router.all(`/:id/flashCards`, AuthenticationMiddleware());
     this.router.get(
       ``,
-      AuthorizationMiddleware(Permissions.Category.Read),
+      AuthorizationMiddleware(Permissions.Category.Read),      
       controller.get.bind(controller)
     );
     this.router.post(
       ``,
       AuthorizationMiddleware(Permissions.Category.Create),
+      ValidationMiddleware(CreateCategoryRequest),
       controller.create.bind(controller)
     );
     this.router.get(
       `/:id`,
-      AuthorizationMiddleware(Permissions.Category.ReadById),
+      AuthorizationMiddleware(Permissions.Category.ReadById),      
       controller.getById.bind(controller)
     );
     this.router.put(
       `/:id`,
       AuthorizationMiddleware(Permissions.Category.UpdateById),
+      ValidationMiddleware(UpdateCategoryRequest),
       controller.updateById.bind(controller)
     );
     this.router.delete(

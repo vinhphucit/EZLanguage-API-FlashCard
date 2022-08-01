@@ -10,8 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateFlashCardRequest = void 0;
+const class_transformer_1 = require("class-transformer");
 const class_validator_1 = require("class-validator");
 const IsNotEmptyString_1 = require("../../../../utils/validation/IsNotEmptyString");
+const KeyValueRequest_1 = require("./KeyValueRequest");
 class CreateFlashCardRequest {
 }
 __decorate([
@@ -32,5 +34,26 @@ __decorate([
     (0, IsNotEmptyString_1.IsNotEmptyString)(),
     __metadata("design:type", String)
 ], CreateFlashCardRequest.prototype, "categoryId", void 0);
+__decorate([
+    (0, class_validator_1.IsArray)(),
+    (0, class_validator_1.ValidateNested)({ each: true }),
+    (0, class_transformer_1.Type)(() => KeyValueRequest_1.KeyValueRequest),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", Array)
+], CreateFlashCardRequest.prototype, "imageUrls", void 0);
+__decorate([
+    (0, class_validator_1.IsArray)(),
+    (0, class_validator_1.ValidateNested)({ each: true }),
+    (0, class_transformer_1.Type)(() => KeyValueRequest_1.KeyValueRequest),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", Array)
+], CreateFlashCardRequest.prototype, "soundUrls", void 0);
+__decorate([
+    (0, class_validator_1.IsArray)(),
+    (0, class_validator_1.ValidateNested)({ each: true }),
+    (0, class_transformer_1.Type)(() => KeyValueRequest_1.KeyValueRequest),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", Array)
+], CreateFlashCardRequest.prototype, "references", void 0);
 exports.CreateFlashCardRequest = CreateFlashCardRequest;
 //# sourceMappingURL=CreateFlashCardRequest.js.map

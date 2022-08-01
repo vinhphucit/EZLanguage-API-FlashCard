@@ -34,9 +34,7 @@
     "paths": {
         "/health/check": {
             "get": {
-                "tags": [
-                    "System"
-                ],
+                "tags": ["System"],
                 "summary": "Health Check",
                 "operationId": "connect",
                 "parameters": [
@@ -68,9 +66,7 @@
         },
         "/flashCards": {
             "get": {
-                "tags": [
-                    "FlashCard"
-                ],
+                "tags": ["FlashCard"],
                 "summary": "Get FlashCards",
                 "operationId": "getFlashCards",
                 "parameters": [
@@ -130,9 +126,7 @@
                 ]
             },
             "post": {
-                "tags": [
-                    "FlashCard"
-                ],
+                "tags": ["FlashCard"],
                 "summary": "Create FlashCard",
                 "operationId": "createFlashCard",
                 "requestBody": {
@@ -168,9 +162,7 @@
         },
         "/flashCards/{id}": {
             "get": {
-                "tags": [
-                    "FlashCard"
-                ],
+                "tags": ["FlashCard"],
                 "summary": "Get FlashCard By Id",
                 "operationId": "getFlashCardById",
                 "parameters": [
@@ -205,9 +197,7 @@
                 ]
             },
             "put": {
-                "tags": [
-                    "FlashCard"
-                ],
+                "tags": ["FlashCard"],
                 "summary": "Update FlashCard By Id",
                 "operationId": "updateFlashCardById",
                 "parameters": [
@@ -251,9 +241,7 @@
                 ]
             },
             "delete": {
-                "tags": [
-                    "FlashCard"
-                ],
+                "tags": ["FlashCard"],
                 "summary": "Delete FlashCard",
                 "operationId": "deleteFlashCardById",
                 "parameters": [
@@ -283,9 +271,7 @@
         },
         "/categories": {
             "get": {
-                "tags": [
-                    "Category"
-                ],
+                "tags": ["Category"],
                 "summary": "Get Categories",
                 "operationId": "getCategories",
                 "parameters": [
@@ -345,9 +331,7 @@
                 ]
             },
             "post": {
-                "tags": [
-                    "Category"
-                ],
+                "tags": ["Category"],
                 "summary": "Create Category",
                 "operationId": "createCategory",
                 "requestBody": {
@@ -383,9 +367,7 @@
         },
         "/categories/{id}": {
             "get": {
-                "tags": [
-                    "Category"
-                ],
+                "tags": ["Category"],
                 "summary": "Get Category By Id",
                 "operationId": "getCategoryById",
                 "parameters": [
@@ -420,9 +402,7 @@
                 ]
             },
             "put": {
-                "tags": [
-                    "Category"
-                ],
+                "tags": ["Category"],
                 "summary": "Update Category By Id",
                 "operationId": "updateCategoryById",
                 "parameters": [
@@ -466,9 +446,7 @@
                 ]
             },
             "delete": {
-                "tags": [
-                    "Category"
-                ],
+                "tags": ["Category"],
                 "summary": "Delete Category",
                 "operationId": "deleteCategoryById",
                 "parameters": [
@@ -498,9 +476,7 @@
         },
         "/categories/{id}/flashCards": {
             "get": {
-                "tags": [
-                    "Category"
-                ],
+                "tags": ["Category"],
                 "summary": "Get FlashCards By Category",
                 "operationId": "getFlashCardsByCategoryId",
                 "parameters": [
@@ -600,6 +576,17 @@
                     }
                 }
             },
+            "KeyValueRequest": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                }
+            },
             "CreateFlashCardRequest": {
                 "type": "object",
                 "properties": {
@@ -611,6 +598,24 @@
                     },
                     "categoryId": {
                         "type": "string"
+                    },
+                    "imageUrls": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/KeyValueRequest"
+                        }
+                    },
+                    "soundUrls": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/KeyValueRequest"
+                        }
+                    },
+                    "references": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/KeyValueRequest"
+                        }
                     }
                 }
             },
@@ -622,6 +627,24 @@
                     },
                     "description": {
                         "type": "string"
+                    },
+                    "imageUrls": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/KeyValueRequest"
+                        }
+                    },
+                    "soundUrls": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/KeyValueRequest"
+                        }
+                    },
+                    "references": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/KeyValueRequest"
+                        }
                     }
                 }
             },

@@ -14,7 +14,7 @@
       "url": "http://localhost:3000/flashcard/"
     },
     {
-      "url":"https://ez-lang-flashcard.herokuapp.com/flashcard/"
+      "url": "https://ez-lang-flashcard.herokuapp.com/flashcard/"
     }
   ],
   "tags": [
@@ -34,9 +34,7 @@
   "paths": {
     "/health/check": {
       "get": {
-        "tags": [
-          "System"
-        ],
+        "tags": ["System"],
         "summary": "Health Check",
         "operationId": "connect",
         "parameters": [
@@ -66,11 +64,9 @@
         }
       }
     },
-    "/flashCards":{
+    "/flashCards": {
       "get": {
-        "tags": [
-          "FlashCard"
-        ],
+        "tags": ["FlashCard"],
         "summary": "Get FlashCards",
         "operationId": "getFlashCards",
         "parameters": [
@@ -130,11 +126,9 @@
         ]
       },
       "post": {
-        "tags": [
-          "FlashCard"
-        ],
+        "tags": ["FlashCard"],
         "summary": "Create FlashCard",
-        "operationId": "createFlashCard",      
+        "operationId": "createFlashCard",
         "requestBody": {
           "content": {
             "application/json": {
@@ -166,14 +160,12 @@
         ]
       }
     },
-    "/flashCards/{id}":{
+    "/flashCards/{id}": {
       "get": {
-        "tags": [
-          "FlashCard"
-        ],
+        "tags": ["FlashCard"],
         "summary": "Get FlashCard By Id",
         "operationId": "getFlashCardById",
-        "parameters": [          
+        "parameters": [
           {
             "name": "id",
             "required": true,
@@ -205,9 +197,7 @@
         ]
       },
       "put": {
-        "tags": [
-          "FlashCard"
-        ],
+        "tags": ["FlashCard"],
         "summary": "Update FlashCard By Id",
         "operationId": "updateFlashCardById",
         "parameters": [
@@ -251,9 +241,7 @@
         ]
       },
       "delete": {
-        "tags": [
-          "FlashCard"
-        ],
+        "tags": ["FlashCard"],
         "summary": "Delete FlashCard",
         "operationId": "deleteFlashCardById",
         "parameters": [
@@ -281,11 +269,9 @@
         ]
       }
     },
-    "/categories":{
+    "/categories": {
       "get": {
-        "tags": [
-          "Category"
-        ],
+        "tags": ["Category"],
         "summary": "Get Categories",
         "operationId": "getCategories",
         "parameters": [
@@ -345,11 +331,9 @@
         ]
       },
       "post": {
-        "tags": [
-          "Category"
-        ],
+        "tags": ["Category"],
         "summary": "Create Category",
-        "operationId": "createCategory",      
+        "operationId": "createCategory",
         "requestBody": {
           "content": {
             "application/json": {
@@ -381,14 +365,12 @@
         ]
       }
     },
-    "/categories/{id}":{
+    "/categories/{id}": {
       "get": {
-        "tags": [
-          "Category"
-        ],
+        "tags": ["Category"],
         "summary": "Get Category By Id",
         "operationId": "getCategoryById",
-        "parameters": [          
+        "parameters": [
           {
             "name": "id",
             "required": true,
@@ -420,9 +402,7 @@
         ]
       },
       "put": {
-        "tags": [
-          "Category"
-        ],
+        "tags": ["Category"],
         "summary": "Update Category By Id",
         "operationId": "updateCategoryById",
         "parameters": [
@@ -466,9 +446,7 @@
         ]
       },
       "delete": {
-        "tags": [
-          "Category"
-        ],
+        "tags": ["Category"],
         "summary": "Delete Category",
         "operationId": "deleteCategoryById",
         "parameters": [
@@ -496,14 +474,12 @@
         ]
       }
     },
-    "/categories/{id}/flashCards":{
+    "/categories/{id}/flashCards": {
       "get": {
-        "tags": [
-          "Category"
-        ],
+        "tags": ["Category"],
         "summary": "Get FlashCards By Category",
         "operationId": "getFlashCardsByCategoryId",
-        "parameters": [          
+        "parameters": [
           {
             "name": "id",
             "required": true,
@@ -511,7 +487,7 @@
             "schema": {
               "type": "string"
             }
-          },        
+          },
           {
             "name": "limit",
             "in": "query",
@@ -600,6 +576,17 @@
           }
         }
       },
+      "KeyValueRequest": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      },
       "CreateFlashCardRequest": {
         "type": "object",
         "properties": {
@@ -611,6 +598,24 @@
           },
           "categoryId": {
             "type": "string"
+          },
+          "imageUrls": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/KeyValueRequest"
+            }
+          },
+          "soundUrls": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/KeyValueRequest"
+            }
+          },
+          "references": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/KeyValueRequest"
+            }
           }
         }
       },
@@ -622,6 +627,24 @@
           },
           "description": {
             "type": "string"
+          },
+          "imageUrls": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/KeyValueRequest"
+            }
+          },
+          "soundUrls": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/KeyValueRequest"
+            }
+          },
+          "references": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/KeyValueRequest"
+            }
           }
         }
       },

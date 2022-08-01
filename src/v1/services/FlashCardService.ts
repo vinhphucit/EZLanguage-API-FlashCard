@@ -8,6 +8,7 @@ import { CreateFlashCardRequest } from "../models/dto/request/flashCard/CreateFl
 import { UpdateFlashCardRequest } from "../models/dto/request/flashCard/UpdateFlashCardRequest";
 import { FlashCardRepository } from "../repositories/FlashCardRepository";
 import { switchNull } from "../utils/StringUtils";
+import { KeyValue } from "../models/dao/KeyValue";
 
 @Service()
 export class FlashCardService {
@@ -21,6 +22,18 @@ export class FlashCardService {
       title: flashCard.title,
       description: flashCard.description,
       categoryId: flashCard.categoryId,
+      imageUrls: flashCard.imageUrls?.map((i) => {
+        const m: KeyValue = { name: i.key, value: i.value };
+        return m;
+      }),
+      soundUrls: flashCard.soundUrls?.map((i) => {
+        const m: KeyValue = { name: i.key, value: i.value };
+        return m;
+      }),
+      references: flashCard.references?.map((i) => {
+        const m: KeyValue = { name: i.key, value: i.value };
+        return m;
+      }),
       userId: userId,
     };
     return this.repo.create(item);
@@ -71,6 +84,21 @@ export class FlashCardService {
 
     entity.title = switchNull(request.title, entity.title);
     entity.description = switchNull(request.description, entity.description);
+    entity.imageUrls = switchNull(
+      request.imageUrls?.map((i) => {
+        const m: KeyValue = { name: i.key, value: i.value };
+        return m;
+      }),
+      entity.imageUrls
+    );
+    entity.soundUrls = switchNull(request.soundUrls?.map((i) => {
+      const m: KeyValue = { name: i.key, value: i.value };
+      return m;
+    }), entity.soundUrls);
+    entity.references = switchNull(request.references?.map((i) => {
+      const m: KeyValue = { name: i.key, value: i.value };
+      return m;
+    }), entity.references);
 
     const updateEntity = await this.repo.updateById(id, entity);
 
