@@ -13,7 +13,7 @@ import { ReqFormaterMiddleware } from "./base/middlewares/ReqFormaterMiddleware"
 import { SwaggerRouter } from "./v1/routers/SwaggerRouter";
 import { HealthCheckRouter } from "./v1/routers/HealthCheckRouter";
 import { NotFoundRouter } from "./v1/routers/NotFoundRouter";
-import { FlashCardRouter } from "./v1/routers/FlashCardRouter";
+import { FlashcardRouter } from "./v1/routers/FlashcardRouter";
 import { CategoryRouter } from "./v1/routers/CategoryRouter";
 
 export class App {
@@ -48,7 +48,7 @@ export class App {
     this.routes.push(
       new SwaggerRouter(this.app),
       new HealthCheckRouter(this.app),
-      new FlashCardRouter(this.app),
+      new FlashcardRouter(this.app),
       new CategoryRouter(this.app),
       new NotFoundRouter(this.app)
     );

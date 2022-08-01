@@ -4,7 +4,7 @@ import { ICategory } from "./Category";
 import { CollectionNames } from "./CollectionNames";
 import { KeyValue, KeyValueSchema } from "./KeyValue";
 
-export interface IFlashCard extends Document {
+export interface IFlashcard extends Document {
   title: string;
   description: string;
   userId: string;
@@ -12,18 +12,23 @@ export interface IFlashCard extends Document {
   imageUrls: KeyValue[];
   soundUrls: KeyValue[];
   references: KeyValue[];
+  masteredLevel: number;
   createdAt: Date;
   updatedAt: Date;
 }
 
-export interface IFlashCardModel extends Model<IFlashCard> {}
+export interface IFlashcardModel extends Model<IFlashcard> {}
 
-export const FlashCardSchema = new Schema<IFlashCard>(
+export const FlashcardSchema = new Schema<IFlashcard>(
   {
     title: String,
     description: String,
     userId: String,
     categoryId: String,
+    masteredLevel: {
+      type: "Number",
+      default: 0
+    },
     imageUrls: [KeyValueSchema],
     soundUrls: [KeyValueSchema],
     references: [KeyValueSchema],
@@ -33,9 +38,9 @@ export const FlashCardSchema = new Schema<IFlashCard>(
   }
 );
 
-const FlashCard: IFlashCardModel = EzMongooseConnection.model<
-  IFlashCard,
-  IFlashCardModel
->(CollectionNames.FlashCard, FlashCardSchema);
+const Flashcard: IFlashcardModel = EzMongooseConnection.model<
+  IFlashcard,
+  IFlashcardModel
+>(CollectionNames.Flashcard, FlashcardSchema);
 
-export default FlashCard;
+export default Flashcard;

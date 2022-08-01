@@ -3,7 +3,7 @@ import {IsArray, IsEmail, IsOptional, IsString, Length, MaxLength, ValidateNeste
 import {IsNotEmptyString} from "../../../../utils/validation/IsNotEmptyString";
 import { KeyValueRequest } from './KeyValueRequest';
 
-export class CreateFlashCardRequest {
+export class CreateFlashcardRequest {
     @IsString()
     @Length(1, 50)
     @IsNotEmptyString()

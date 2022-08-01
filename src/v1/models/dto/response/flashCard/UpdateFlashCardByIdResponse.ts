@@ -1,5 +1,5 @@
-import { FlashCardDomain } from "../../../domain/FlashCardDomain";
+import { FlashcardDomain } from "../../../domain/FlashcardDomain";
 
-export class UpdateFlashCardByIdResponse extends FlashCardDomain {
+export class UpdateFlashcardByIdResponse extends FlashcardDomain {
 
 }

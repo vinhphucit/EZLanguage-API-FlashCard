@@ -1,25 +1,25 @@
 import { Service } from "typedi";
 import {NextFunction, Request, Response} from "express";
 import { SuccessResponse } from "../../base/models/dto/response/success/SuccessResponse";
-import { FlashCardService } from "../services/FlashCardService";
-import { CreateFlashCardRequest } from "../models/dto/request/flashCard/CreateFlashCardRequest";
-import { CreateFlashCardResponse } from "../models/dto/response/flashCard/CreateFlashCardResponse";
-import { GetFlashCardsResponse } from "../models/dto/response/flashCard/GetFlashCardsResponse";
-import { GetFlashCardByIdResponse } from "../models/dto/response/flashCard/GetFlashCardByIdResponse";
+import { FlashcardService } from "../services/FlashcardService";
+import { CreateFlashcardRequest  } from "../models/dto/request/flashcard/CreateFlashcardRequest";
+import { CreateFlashcardResponse } from "../models/dto/response/flashcard/CreateFlashcardResponse";
+import { GetFlashcardsResponse } from "../models/dto/response/flashcard/GetFlashcardsResponse";
+import { GetFlashcardByIdResponse } from "../models/dto/response/flashcard/GetFlashcardByIdResponse";
 import { NoContentResponse } from "../../base/models/dto/response/success/NoContentResponse";
-import { UpdateFlashCardByIdResponse } from "../models/dto/response/flashCard/UpdateFlashCardByIdResponse";
+import { UpdateFlashcardByIdResponse } from "../models/dto/response/flashcard/UpdateFlashcardByIdResponse";
 import { getRequestUserId } from "../utils/RequestUtils";
 @Service()
-export class FlashCardController {
-    constructor(private readonly service: FlashCardService){
+export class FlashcardController {
+    constructor(private readonly service: FlashcardService){
     }
 
     public async create(req: Request, res: Response, next: NextFunction) {
         try {            
-            const request: CreateFlashCardRequest = req.body;
+            const request: CreateFlashcardRequest = req.body;
             const userId = getRequestUserId(req);
             const result = await this.service.create(request, userId)
-            next(new SuccessResponse(new CreateFlashCardResponse(result)));
+            next(new SuccessResponse(new CreateFlashcardResponse(result)));
         } catch (e) {
             return next(e)
         }
@@ -30,7 +30,7 @@ export class FlashCardController {
             const {limit, start, sort, query} = req.query as any;
             const userId = getRequestUserId(req);
             const result = await this.service.get(limit, start, sort, query, userId)
-            next(new SuccessResponse(new GetFlashCardsResponse(result.items.map(value => new GetFlashCardByIdResponse(value)), result.start, result.limit, result.totalItems, result.sort, result.query)))
+            next(new SuccessResponse(new GetFlashcardsResponse(result.items.map(value => new GetFlashcardByIdResponse(value)), result.start, result.limit, result.totalItems, result.sort, result.query)))
         } catch (e) {
             return next(e)
         }
@@ -41,7 +41,7 @@ export class FlashCardController {
             const id = req.params.id;            
             const userId = getRequestUserId(req);
             const result = await this.service.getById(id,userId)
-            next(new SuccessResponse(new GetFlashCardByIdResponse(result)))
+            next(new SuccessResponse(new GetFlashcardByIdResponse(result)))
         } catch (e) {
             return next(e)
         }
@@ -52,7 +52,7 @@ export class FlashCardController {
             const request = req.body;          
             const userId = getRequestUserId(req);  
             const result = await this.service.updateById(id, request,userId)
-            next(new SuccessResponse(new UpdateFlashCardByIdResponse(result)))
+            next(new SuccessResponse(new UpdateFlashcardByIdResponse(result)))
         } catch (e) {
             return next(e)
         }

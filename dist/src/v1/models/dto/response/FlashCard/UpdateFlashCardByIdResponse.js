@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateFlashCardByIdResponse = void 0;
-const FlashCardDomain_1 = require("../../../domain/FlashCardDomain");
-class UpdateFlashCardByIdResponse extends FlashCardDomain_1.FlashCardDomain {
+exports.UpdateFlashcardByIdResponse = void 0;
+const FlashcardDomain_1 = require("../../../domain/FlashcardDomain");
+class UpdateFlashcardByIdResponse extends FlashcardDomain_1.FlashcardDomain {
 }
-exports.UpdateFlashCardByIdResponse = UpdateFlashCardByIdResponse;
-//# sourceMappingURL=UpdateFlashCardByIdResponse.js.map
+exports.UpdateFlashcardByIdResponse = UpdateFlashcardByIdResponse;
+//# sourceMappingURL=UpdateFlashcardByIdResponse.js.map

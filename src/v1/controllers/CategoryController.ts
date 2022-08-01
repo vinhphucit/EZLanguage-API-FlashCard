@@ -9,13 +9,14 @@ import { GetCategoryByIdResponse } from "../models/dto/response/category/GetCate
 import { NoContentResponse } from "../../base/models/dto/response/success/NoContentResponse";
 import { UpdateCategoryByIdResponse } from "../models/dto/response/category/UpdateCategoryByIdResponse";
 import { getRequestUserId } from "../utils/RequestUtils";
-import { FlashCardService } from "../services/FlashCardService";
-import { GetFlashCardsResponse } from "../models/dto/response/flashCard/GetFlashCardsResponse";
-import { GetFlashCardByIdResponse } from "../models/dto/response/flashCard/GetFlashCardByIdResponse";
+import { FlashcardService } from "../services/FlashcardService";
+import { GetFlashcardsResponse } from "../models/dto/response/flashcard/GetFlashcardsResponse";
+import { GetFlashcardByIdResponse } from "../models/dto/response/flashcard/GetFlashcardByIdResponse";
+
 @Service()
 export class CategoryController {
   @Inject()
-  flashCardService: FlashCardService;
+  flashcardService: FlashcardService;
 
   constructor(private readonly service: CategoryService) {}
 
@@ -86,7 +87,7 @@ export class CategoryController {
     }
   }
 
-  public async getFlashCardsByCategoryId(
+  public async getFlashcardsByCategoryId(
     req: Request,
     res: Response,
     next: NextFunction
@@ -96,7 +97,7 @@ export class CategoryController {
       const { limit, start, sort, query } = req.query as any;
       const userId = getRequestUserId(req);
 
-      const result = await this.flashCardService.getByCategoryId(
+      const result = await this.flashcardService.getByCategoryId(
         limit,
         start,
         sort,
@@ -107,8 +108,8 @@ export class CategoryController {
 
       next(
         new SuccessResponse(
-          new GetFlashCardsResponse(
-            result.items.map((value) => new GetFlashCardByIdResponse(value)),
+          new GetFlashcardsResponse(
+            result.items.map((value) => new GetFlashcardByIdResponse(value)),
             result.start,
             result.limit,
             result.totalItems,

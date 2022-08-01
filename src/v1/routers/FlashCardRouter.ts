@@ -2,49 +2,49 @@ import { CommonRoutesConfig } from "./CommonRouterConfig";
 import express from "express";
 
 import Container from "typedi";
-import { FlashCardController } from "../controllers/FlashCardController";
+import { FlashcardController } from "../controllers/FlashcardController";
 import { Permissions } from "../utils/auth/Permissions";
 import { AuthorizationMiddleware } from "../middlewares/AuthorizationMiddleware";
 import { AuthenticationMiddleware } from "../middlewares/AuthenticationMiddleware";
-import { CreateFlashCardRequest } from "../models/dto/request/flashCard/CreateFlashCardRequest";
+import { CreateFlashcardRequest } from "../models/dto/request/flashcard/CreateFlashcardRequest";
 import { ValidationMiddleware } from "../middlewares/ValidationMiddleware";
-import { UpdateFlashCardRequest } from "../models/dto/request/flashCard/UpdateFlashCardRequest";
+import { UpdateFlashcardRequest } from "../models/dto/request/flashcard/UpdateFlashcardRequest";
 
-export class FlashCardRouter extends CommonRoutesConfig {
+export class FlashcardRouter extends CommonRoutesConfig {
   constructor(app: express.Application) {
-    super(app, "FlashCard", `flashCards`);
+    super(app, "Flashcard", `flashcards`);
   }
 
   configureRoutes() {
-    const controller = Container.get(FlashCardController);
+    const controller = Container.get(FlashcardController);
 
     this.router.all(``, AuthenticationMiddleware());
     this.router.all(`/:id`, AuthenticationMiddleware());
     this.router.get(
       ``,
-      AuthorizationMiddleware(Permissions.FlashCard.Read),
+      AuthorizationMiddleware(Permissions.Flashcard.Read),
       controller.get.bind(controller)
     );
     this.router.post(
       ``,
-      AuthorizationMiddleware(Permissions.FlashCard.Create),
-      ValidationMiddleware(CreateFlashCardRequest),
+      AuthorizationMiddleware(Permissions.Flashcard.Create),
+      ValidationMiddleware(CreateFlashcardRequest),
       controller.create.bind(controller)
     );
     this.router.get(
       `/:id`,
-      AuthorizationMiddleware(Permissions.FlashCard.ReadById),
+      AuthorizationMiddleware(Permissions.Flashcard.ReadById),
       controller.getById.bind(controller)
     );
     this.router.put(
       `/:id`,
-      AuthorizationMiddleware(Permissions.FlashCard.UpdateById),
-      ValidationMiddleware(UpdateFlashCardRequest),
+      AuthorizationMiddleware(Permissions.Flashcard.UpdateById),
+      ValidationMiddleware(UpdateFlashcardRequest),
       controller.updateById.bind(controller)
     );
     this.router.delete(
       `/:id`,
-      AuthorizationMiddleware(Permissions.FlashCard.DeleteById),
+      AuthorizationMiddleware(Permissions.Flashcard.DeleteById),
       controller.deleteById.bind(controller)
     );
   }

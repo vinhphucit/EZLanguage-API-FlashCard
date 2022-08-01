@@ -28,9 +28,9 @@ const GetCategoryByIdResponse_1 = require("../models/dto/response/category/GetCa
 const NoContentResponse_1 = require("../../base/models/dto/response/success/NoContentResponse");
 const UpdateCategoryByIdResponse_1 = require("../models/dto/response/category/UpdateCategoryByIdResponse");
 const RequestUtils_1 = require("../utils/RequestUtils");
-const FlashCardService_1 = require("../services/FlashCardService");
-const GetFlashCardsResponse_1 = require("../models/dto/response/flashCard/GetFlashCardsResponse");
-const GetFlashCardByIdResponse_1 = require("../models/dto/response/flashCard/GetFlashCardByIdResponse");
+const FlashcardService_1 = require("../services/FlashcardService");
+const GetFlashcardsResponse_1 = require("../models/dto/response/flashcard/GetFlashcardsResponse");
+const GetFlashcardByIdResponse_1 = require("../models/dto/response/flashcard/GetFlashcardByIdResponse");
 let CategoryController = class CategoryController {
     constructor(service) {
         this.service = service;
@@ -101,14 +101,14 @@ let CategoryController = class CategoryController {
             }
         });
     }
-    getFlashCardsByCategoryId(req, res, next) {
+    getFlashcardsByCategoryId(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const id = req.params.id;
                 const { limit, start, sort, query } = req.query;
                 const userId = (0, RequestUtils_1.getRequestUserId)(req);
-                const result = yield this.flashCardService.getByCategoryId(limit, start, sort, query, id, userId);
-                next(new SuccessResponse_1.SuccessResponse(new GetFlashCardsResponse_1.GetFlashCardsResponse(result.items.map((value) => new GetFlashCardByIdResponse_1.GetFlashCardByIdResponse(value)), result.start, result.limit, result.totalItems, result.sort, result.query)));
+                const result = yield this.flashcardService.getByCategoryId(limit, start, sort, query, id, userId);
+                next(new SuccessResponse_1.SuccessResponse(new GetFlashcardsResponse_1.GetFlashcardsResponse(result.items.map((value) => new GetFlashcardByIdResponse_1.GetFlashcardByIdResponse(value)), result.start, result.limit, result.totalItems, result.sort, result.query)));
             }
             catch (e) {
                 return next(e);
@@ -118,8 +118,8 @@ let CategoryController = class CategoryController {
 };
 __decorate([
     (0, typedi_1.Inject)(),
-    __metadata("design:type", FlashCardService_1.FlashCardService)
-], CategoryController.prototype, "flashCardService", void 0);
+    __metadata("design:type", FlashcardService_1.FlashcardService)
+], CategoryController.prototype, "flashcardService", void 0);
 CategoryController = __decorate([
     (0, typedi_1.Service)(),
     __metadata("design:paramtypes", [CategoryService_1.CategoryService])

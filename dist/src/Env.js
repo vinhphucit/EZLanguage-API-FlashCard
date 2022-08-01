@@ -39,7 +39,7 @@ if (!process.env.ENV || process.env.ENV === 'test') {
 }
 exports.env = {
     app: {
-        name: 'EZ-Lang-FlashCard',
+        name: 'EZ-Lang-Flashcard',
         version: pkg.version,
         host: (0, env_1.getOsEnv)('HOST'),
         port: (0, env_1.getOsEnv)('PORT'),

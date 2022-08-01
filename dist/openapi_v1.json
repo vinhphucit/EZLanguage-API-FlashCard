@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.1",
     "info": {
-        "title": "EZ-Lang-FlashCard",
+        "title": "EZ-Lang-Flashcard",
         "version": "1.0.0",
         "description": "REST API designed to provide flashcard functions for ez language",
         "contact": {
@@ -27,8 +27,8 @@
             "description": "Category APIs"
         },
         {
-            "name": "FlashCard",
-            "description": "FlashCard APIs"
+            "name": "Flashcard",
+            "description": "Flashcard APIs"
         }
     ],
     "paths": {
@@ -64,11 +64,11 @@
                 }
             }
         },
-        "/flashCards": {
+        "/flashcards": {
             "get": {
-                "tags": ["FlashCard"],
-                "summary": "Get FlashCards",
-                "operationId": "getFlashCards",
+                "tags": ["Flashcard"],
+                "summary": "Get Flashcards",
+                "operationId": "getFlashcards",
                 "parameters": [
                     {
                         "name": "limit",
@@ -110,7 +110,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/GetFlashCardsResponse"
+                                    "$ref": "#/components/schemas/GetFlashcardsResponse"
                                 }
                             }
                         }
@@ -126,14 +126,14 @@
                 ]
             },
             "post": {
-                "tags": ["FlashCard"],
-                "summary": "Create FlashCard",
-                "operationId": "createFlashCard",
+                "tags": ["Flashcard"],
+                "summary": "Create Flashcard",
+                "operationId": "createFlashcard",
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/CreateFlashCardRequest"
+                                "$ref": "#/components/schemas/CreateFlashcardRequest"
                             }
                         }
                     }
@@ -144,7 +144,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/FlashCard"
+                                    "$ref": "#/components/schemas/Flashcard"
                                 }
                             }
                         }
@@ -160,11 +160,11 @@
                 ]
             }
         },
-        "/flashCards/{id}": {
+        "/flashcards/{id}": {
             "get": {
-                "tags": ["FlashCard"],
-                "summary": "Get FlashCard By Id",
-                "operationId": "getFlashCardById",
+                "tags": ["Flashcard"],
+                "summary": "Get Flashcard By Id",
+                "operationId": "getFlashcardById",
                 "parameters": [
                     {
                         "name": "id",
@@ -181,7 +181,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/FlashCard"
+                                    "$ref": "#/components/schemas/Flashcard"
                                 }
                             }
                         }
@@ -197,9 +197,9 @@
                 ]
             },
             "put": {
-                "tags": ["FlashCard"],
-                "summary": "Update FlashCard By Id",
-                "operationId": "updateFlashCardById",
+                "tags": ["Flashcard"],
+                "summary": "Update Flashcard By Id",
+                "operationId": "updateFlashcardById",
                 "parameters": [
                     {
                         "name": "id",
@@ -214,7 +214,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/UpdateFlashCardRequest"
+                                "$ref": "#/components/schemas/UpdateFlashcardRequest"
                             }
                         }
                     }
@@ -225,7 +225,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/FlashCard"
+                                    "$ref": "#/components/schemas/Flashcard"
                                 }
                             }
                         }
@@ -241,9 +241,9 @@
                 ]
             },
             "delete": {
-                "tags": ["FlashCard"],
-                "summary": "Delete FlashCard",
-                "operationId": "deleteFlashCardById",
+                "tags": ["Flashcard"],
+                "summary": "Delete Flashcard",
+                "operationId": "deleteFlashcardById",
                 "parameters": [
                     {
                         "name": "id",
@@ -474,11 +474,11 @@
                 ]
             }
         },
-        "/categories/{id}/flashCards": {
+        "/categories/{id}/flashcards": {
             "get": {
                 "tags": ["Category"],
-                "summary": "Get FlashCards By Category",
-                "operationId": "getFlashCardsByCategoryId",
+                "summary": "Get Flashcards By Category",
+                "operationId": "getFlashcardsByCategoryId",
                 "parameters": [
                     {
                         "name": "id",
@@ -528,7 +528,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/GetFlashCardsResponse"
+                                    "$ref": "#/components/schemas/GetFlashcardsResponse"
                                 }
                             }
                         }
@@ -587,7 +587,7 @@
                     }
                 }
             },
-            "CreateFlashCardRequest": {
+            "CreateFlashcardRequest": {
                 "type": "object",
                 "properties": {
                     "title": {
@@ -619,7 +619,7 @@
                     }
                 }
             },
-            "UpdateFlashCardRequest": {
+            "UpdateFlashcardRequest": {
                 "type": "object",
                 "properties": {
                     "title": {
@@ -645,10 +645,13 @@
                         "items": {
                             "$ref": "#/components/schemas/KeyValueRequest"
                         }
+                    },
+                    "masteredLevel": {
+                        "type": "number"
                     }
                 }
             },
-            "GetFlashCardsResponse": {
+            "GetFlashcardsResponse": {
                 "type": "object",
                 "allOf": [
                     {
@@ -658,7 +661,7 @@
                             "items": {
                                 "type": "array",
                                 "items": {
-                                    "$ref": "#/components/schemas/FlashCard"
+                                    "$ref": "#/components/schemas/Flashcard"
                                 }
                             }
                         }
@@ -742,7 +745,7 @@
                     }
                 }
             },
-            "FlashCard": {
+            "Flashcard": {
                 "type": "object",
                 "properties": {
                     "id": {
@@ -752,6 +755,30 @@
                         "type": "string"
                     },
                     "description": {
+                        "type": "string"
+                    },
+                    "imageUrls": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/NameValue"
+                        }
+                    },
+                    "soundUrls": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/NameValue"
+                        }
+                    },
+                    "references": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/NameValue"
+                        }
+                    },
+                    "masteredLevel": {
+                        "type": "number"
+                    },
+                    "categoryId": {
                         "type": "string"
                     },
                     "userId": {
@@ -790,6 +817,17 @@
                         "type": "string"
                     },
                     "updatedAt": {
+                        "type": "string"
+                    }
+                }
+            },
+            "NameValue": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "value": {
                         "type": "string"
                     }
                 }

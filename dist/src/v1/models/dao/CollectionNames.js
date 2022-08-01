@@ -8,6 +8,7 @@ if (process.env.ENV == "test") {
 class CollectionNames {
 }
 exports.CollectionNames = CollectionNames;
-CollectionNames.FlashCard = "flash_card" + subfix;
+CollectionNames.Flashcard = "flashcard" + subfix;
 CollectionNames.Category = "category" + subfix;
+CollectionNames.FlashcardLevel = "flashcard_level" + subfix;
 //# sourceMappingURL=CollectionNames.js.map

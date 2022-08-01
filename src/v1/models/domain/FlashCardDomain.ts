@@ -1,7 +1,7 @@
-import { IFlashCard } from "../dao/FlashCard";
+import { IFlashcard } from "../dao/Flashcard";
 import { KeyValueDomain } from "./KeyValueDomain";
 
-export class FlashCardDomain {
+export class FlashcardDomain {
   id: string;
   title: string;
   description: string;
@@ -10,11 +10,13 @@ export class FlashCardDomain {
   imageUrls: KeyValueDomain[];
   soundUrls: KeyValueDomain[];
   references: KeyValueDomain[];
+  masteredLevel: number;
   createdAt: Date;
   updatedAt: Date;
   constructor();
-  constructor(result: IFlashCard);
-  constructor(result?: IFlashCard) {
+  constructor(result: Partial<IFlashcard>);
+  constructor(result: IFlashcard);
+  constructor(result?: IFlashcard) {
     if (!result) return;
     this.id = result._id;
     this.title = result.title;
@@ -27,6 +29,7 @@ export class FlashCardDomain {
       this.soundUrls = result.soundUrls.map((r) => new KeyValueDomain(r));
     if (result.references)
       this.references = result.references.map((r) => new KeyValueDomain(r));
+    this.masteredLevel = result.masteredLevel;
     this.createdAt = result.createdAt;
     this.updatedAt = result.updatedAt;
   }

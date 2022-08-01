@@ -39,7 +39,7 @@ const ReqFormaterMiddleware_1 = require("./base/middlewares/ReqFormaterMiddlewar
 const SwaggerRouter_1 = require("./v1/routers/SwaggerRouter");
 const HealthCheckRouter_1 = require("./v1/routers/HealthCheckRouter");
 const NotFoundRouter_1 = require("./v1/routers/NotFoundRouter");
-const FlashCardRouter_1 = require("./v1/routers/FlashCardRouter");
+const FlashcardRouter_1 = require("./v1/routers/FlashcardRouter");
 const CategoryRouter_1 = require("./v1/routers/CategoryRouter");
 class App {
     // const debugLog: debug.IDebugger = debug('app');
@@ -68,7 +68,7 @@ class App {
         this.app.use(new ResFormaterMiddleware_1.ResFormaterMiddleware().handleResponse);
     }
     initializeRouters() {
-        this.routes.push(new SwaggerRouter_1.SwaggerRouter(this.app), new HealthCheckRouter_1.HealthCheckRouter(this.app), new FlashCardRouter_1.FlashCardRouter(this.app), new CategoryRouter_1.CategoryRouter(this.app), new NotFoundRouter_1.NotFoundRouter(this.app));
+        this.routes.push(new SwaggerRouter_1.SwaggerRouter(this.app), new HealthCheckRouter_1.HealthCheckRouter(this.app), new FlashcardRouter_1.FlashcardRouter(this.app), new CategoryRouter_1.CategoryRouter(this.app), new NotFoundRouter_1.NotFoundRouter(this.app));
     }
     initializeHandlingRequest() {
         this.app.use(new ReqFormaterMiddleware_1.ReqFormaterMiddleware().handleRequest);

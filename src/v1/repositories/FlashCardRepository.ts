@@ -1,12 +1,12 @@
 
 import { Model } from "mongoose";
 import { Service } from "typedi";
-import FlashCard, { IFlashCard } from "../models/dao/FlashCard";
+import Flashcard, { IFlashcard } from "../models/dao/Flashcard";
 import { BaseRepository } from "./BaseRepository";
 
 @Service()
-export class FlashCardRepository extends BaseRepository<IFlashCard> {
-    setModel(): Model<IFlashCard>{
-        return FlashCard;
+export class FlashcardRepository extends BaseRepository<IFlashcard> {
+    setModel(): Model<IFlashcard>{
+        return Flashcard;
     }
 }

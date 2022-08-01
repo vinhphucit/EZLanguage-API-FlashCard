@@ -1,1 +1,1 @@
-{"version":3,"file":"UpdateFlashCardByIdResponse.js","sourceRoot":"","sources":["../../../../../../../src/v1/models/dto/response/flashCard/UpdateFlashCardByIdResponse.ts"],"names":[],"mappings":";;;AAAA,qEAAkE;AAElE,MAAa,2BAA4B,SAAQ,iCAAe;CAE/D;AAFD,kEAEC"}
+{"version":3,"file":"UpdateFlashcardByIdResponse.js","sourceRoot":"","sources":["../../../../../../../src/v1/models/dto/response/flashcard/UpdateFlashcardByIdResponse.ts"],"names":[],"mappings":";;;AAAA,qEAAkE;AAElE,MAAa,2BAA4B,SAAQ,iCAAe;CAE/D;AAFD,kEAEC"}

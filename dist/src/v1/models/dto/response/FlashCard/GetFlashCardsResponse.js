@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetFlashCardsResponse = void 0;
+exports.GetFlashcardsResponse = void 0;
 const BaseListResponse_1 = require("../../../../../base/models/dto/response/BaseListResponse");
-class GetFlashCardsResponse extends BaseListResponse_1.BaseListResponse {
+class GetFlashcardsResponse extends BaseListResponse_1.BaseListResponse {
 }
-exports.GetFlashCardsResponse = GetFlashCardsResponse;
-//# sourceMappingURL=GetFlashCardsResponse.js.map
+exports.GetFlashcardsResponse = GetFlashcardsResponse;
+//# sourceMappingURL=GetFlashcardsResponse.js.map

@@ -1,7 +1,7 @@
 
 import { BaseListResponse } from "../../../../../base/models/dto/response/BaseListResponse";
-import { GetFlashCardByIdResponse } from "./GetFlashCardByIdResponse";
+import { GetFlashcardByIdResponse } from "./GetFlashcardByIdResponse";
 
-export class GetFlashCardsResponse extends BaseListResponse<GetFlashCardByIdResponse> {
+export class GetFlashcardsResponse extends BaseListResponse<GetFlashcardByIdResponse> {
 
 }

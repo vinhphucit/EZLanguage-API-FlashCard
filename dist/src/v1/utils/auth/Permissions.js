@@ -2,12 +2,19 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Permissions = void 0;
 exports.Permissions = {
-    FlashCard: {
+    Flashcard: {
         Create: "fc:c",
         Read: "fc:r",
         ReadById: "fc:rid",
         UpdateById: "fc:uid",
         DeleteById: "fc:did",
+    },
+    FlashcardLevel: {
+        Create: "fl:c",
+        Read: "fl:r",
+        ReadById: "fl:rid",
+        UpdateById: "fl:uid",
+        DeleteById: "fl:did",
     },
     Category: {
         Create: "ca:c",

@@ -18,17 +18,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.FlashCardController = void 0;
+exports.FlashcardController = void 0;
 const typedi_1 = require("typedi");
 const SuccessResponse_1 = require("../../base/models/dto/response/success/SuccessResponse");
-const FlashCardService_1 = require("../services/FlashCardService");
-const CreateFlashCardResponse_1 = require("../models/dto/response/flashCard/CreateFlashCardResponse");
-const GetFlashCardsResponse_1 = require("../models/dto/response/flashCard/GetFlashCardsResponse");
-const GetFlashCardByIdResponse_1 = require("../models/dto/response/flashCard/GetFlashCardByIdResponse");
+const FlashcardService_1 = require("../services/FlashcardService");
+const CreateFlashcardResponse_1 = require("../models/dto/response/flashcard/CreateFlashcardResponse");
+const GetFlashcardsResponse_1 = require("../models/dto/response/flashcard/GetFlashcardsResponse");
+const GetFlashcardByIdResponse_1 = require("../models/dto/response/flashcard/GetFlashcardByIdResponse");
 const NoContentResponse_1 = require("../../base/models/dto/response/success/NoContentResponse");
-const UpdateFlashCardByIdResponse_1 = require("../models/dto/response/flashCard/UpdateFlashCardByIdResponse");
+const UpdateFlashcardByIdResponse_1 = require("../models/dto/response/flashcard/UpdateFlashcardByIdResponse");
 const RequestUtils_1 = require("../utils/RequestUtils");
-let FlashCardController = class FlashCardController {
+let FlashcardController = class FlashcardController {
     constructor(service) {
         this.service = service;
     }
@@ -38,7 +38,7 @@ let FlashCardController = class FlashCardController {
                 const request = req.body;
                 const userId = (0, RequestUtils_1.getRequestUserId)(req);
                 const result = yield this.service.create(request, userId);
-                next(new SuccessResponse_1.SuccessResponse(new CreateFlashCardResponse_1.CreateFlashCardResponse(result)));
+                next(new SuccessResponse_1.SuccessResponse(new CreateFlashcardResponse_1.CreateFlashcardResponse(result)));
             }
             catch (e) {
                 return next(e);
@@ -51,7 +51,7 @@ let FlashCardController = class FlashCardController {
                 const { limit, start, sort, query } = req.query;
                 const userId = (0, RequestUtils_1.getRequestUserId)(req);
                 const result = yield this.service.get(limit, start, sort, query, userId);
-                next(new SuccessResponse_1.SuccessResponse(new GetFlashCardsResponse_1.GetFlashCardsResponse(result.items.map(value => new GetFlashCardByIdResponse_1.GetFlashCardByIdResponse(value)), result.start, result.limit, result.totalItems, result.sort, result.query)));
+                next(new SuccessResponse_1.SuccessResponse(new GetFlashcardsResponse_1.GetFlashcardsResponse(result.items.map(value => new GetFlashcardByIdResponse_1.GetFlashcardByIdResponse(value)), result.start, result.limit, result.totalItems, result.sort, result.query)));
             }
             catch (e) {
                 return next(e);
@@ -64,7 +64,7 @@ let FlashCardController = class FlashCardController {
                 const id = req.params.id;
                 const userId = (0, RequestUtils_1.getRequestUserId)(req);
                 const result = yield this.service.getById(id, userId);
-                next(new SuccessResponse_1.SuccessResponse(new GetFlashCardByIdResponse_1.GetFlashCardByIdResponse(result)));
+                next(new SuccessResponse_1.SuccessResponse(new GetFlashcardByIdResponse_1.GetFlashcardByIdResponse(result)));
             }
             catch (e) {
                 return next(e);
@@ -78,7 +78,7 @@ let FlashCardController = class FlashCardController {
                 const request = req.body;
                 const userId = (0, RequestUtils_1.getRequestUserId)(req);
                 const result = yield this.service.updateById(id, request, userId);
-                next(new SuccessResponse_1.SuccessResponse(new UpdateFlashCardByIdResponse_1.UpdateFlashCardByIdResponse(result)));
+                next(new SuccessResponse_1.SuccessResponse(new UpdateFlashcardByIdResponse_1.UpdateFlashcardByIdResponse(result)));
             }
             catch (e) {
                 return next(e);
@@ -99,9 +99,9 @@ let FlashCardController = class FlashCardController {
         });
     }
 };
-FlashCardController = __decorate([
+FlashcardController = __decorate([
     (0, typedi_1.Service)(),
-    __metadata("design:paramtypes", [FlashCardService_1.FlashCardService])
-], FlashCardController);
-exports.FlashCardController = FlashCardController;
-//# sourceMappingURL=FlashCardController.js.map
+    __metadata("design:paramtypes", [FlashcardService_1.FlashcardService])
+], FlashcardController);
+exports.FlashcardController = FlashcardController;
+//# sourceMappingURL=FlashcardController.js.map

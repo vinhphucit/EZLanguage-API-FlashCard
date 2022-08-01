@@ -21,13 +21,13 @@ class CategoryRouter extends CommonRouterConfig_1.CommonRoutesConfig {
         const controller = typedi_1.default.get(CategoryController_1.CategoryController);
         this.router.all(``, (0, AuthenticationMiddleware_1.AuthenticationMiddleware)());
         this.router.all(`/:id`, (0, AuthenticationMiddleware_1.AuthenticationMiddleware)());
-        this.router.all(`/:id/flashCards`, (0, AuthenticationMiddleware_1.AuthenticationMiddleware)());
+        this.router.all(`/:id/flashcards`, (0, AuthenticationMiddleware_1.AuthenticationMiddleware)());
         this.router.get(``, (0, AuthorizationMiddleware_1.AuthorizationMiddleware)(Permissions_1.Permissions.Category.Read), controller.get.bind(controller));
         this.router.post(``, (0, AuthorizationMiddleware_1.AuthorizationMiddleware)(Permissions_1.Permissions.Category.Create), (0, ValidationMiddleware_1.ValidationMiddleware)(CreateCategoryRequest_1.CreateCategoryRequest), controller.create.bind(controller));
         this.router.get(`/:id`, (0, AuthorizationMiddleware_1.AuthorizationMiddleware)(Permissions_1.Permissions.Category.ReadById), controller.getById.bind(controller));
         this.router.put(`/:id`, (0, AuthorizationMiddleware_1.AuthorizationMiddleware)(Permissions_1.Permissions.Category.UpdateById), (0, ValidationMiddleware_1.ValidationMiddleware)(UpdateCategoryRequest_1.UpdateCategoryRequest), controller.updateById.bind(controller));
         this.router.delete(`/:id`, (0, AuthorizationMiddleware_1.AuthorizationMiddleware)(Permissions_1.Permissions.Category.DeleteById), controller.deleteById.bind(controller));
-        this.router.get(`/:id/flashCards`, (0, AuthorizationMiddleware_1.AuthorizationMiddleware)(Permissions_1.Permissions.Category.ReadById), controller.getFlashCardsByCategoryId.bind(controller));
+        this.router.get(`/:id/flashcards`, (0, AuthorizationMiddleware_1.AuthorizationMiddleware)(Permissions_1.Permissions.Category.ReadById), controller.getFlashcardsByCategoryId.bind(controller));
     }
 }
 exports.CategoryRouter = CategoryRouter;

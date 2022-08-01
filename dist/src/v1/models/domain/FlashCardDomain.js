@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.FlashCardDomain = void 0;
+exports.FlashcardDomain = void 0;
 const KeyValueDomain_1 = require("./KeyValueDomain");
-class FlashCardDomain {
+class FlashcardDomain {
     constructor(result) {
         if (!result)
             return;
@@ -17,9 +17,10 @@ class FlashCardDomain {
             this.soundUrls = result.soundUrls.map((r) => new KeyValueDomain_1.KeyValueDomain(r));
         if (result.references)
             this.references = result.references.map((r) => new KeyValueDomain_1.KeyValueDomain(r));
+        this.masteredLevel = result.masteredLevel;
         this.createdAt = result.createdAt;
         this.updatedAt = result.updatedAt;
     }
 }
-exports.FlashCardDomain = FlashCardDomain;
-//# sourceMappingURL=FlashCardDomain.js.map
+exports.FlashcardDomain = FlashcardDomain;
+//# sourceMappingURL=FlashcardDomain.js.map

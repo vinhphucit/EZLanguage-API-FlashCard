@@ -18,31 +18,31 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.FlashCardService = void 0;
+exports.FlashcardService = void 0;
 const NotFoundException_1 = require("../../base/exceptions/NotFoundException");
 const typedi_1 = require("typedi");
-const FlashCardRepository_1 = require("../repositories/FlashCardRepository");
+const FlashcardRepository_1 = require("../repositories/FlashcardRepository");
 const StringUtils_1 = require("../utils/StringUtils");
-let FlashCardService = class FlashCardService {
+let FlashcardService = class FlashcardService {
     constructor(repo) {
         this.repo = repo;
     }
-    create(flashCard, userId) {
+    create(flashcard, userId) {
         var _a, _b, _c;
         return __awaiter(this, void 0, void 0, function* () {
             let item = {
-                title: flashCard.title,
-                description: flashCard.description,
-                categoryId: flashCard.categoryId,
-                imageUrls: (_a = flashCard.imageUrls) === null || _a === void 0 ? void 0 : _a.map((i) => {
+                title: flashcard.title,
+                description: flashcard.description,
+                categoryId: flashcard.categoryId,
+                imageUrls: (_a = flashcard.imageUrls) === null || _a === void 0 ? void 0 : _a.map((i) => {
                     const m = { name: i.key, value: i.value };
                     return m;
                 }),
-                soundUrls: (_b = flashCard.soundUrls) === null || _b === void 0 ? void 0 : _b.map((i) => {
+                soundUrls: (_b = flashcard.soundUrls) === null || _b === void 0 ? void 0 : _b.map((i) => {
                     const m = { name: i.key, value: i.value };
                     return m;
                 }),
-                references: (_c = flashCard.references) === null || _c === void 0 ? void 0 : _c.map((i) => {
+                references: (_c = flashcard.references) === null || _c === void 0 ? void 0 : _c.map((i) => {
                     const m = { name: i.key, value: i.value };
                     return m;
                 }),
@@ -68,7 +68,7 @@ let FlashCardService = class FlashCardService {
         return __awaiter(this, void 0, void 0, function* () {
             const result = yield this.repo.getById(id);
             if (!result)
-                throw new NotFoundException_1.NotFoundException(`FlashCard ${id} doesn't exist`);
+                throw new NotFoundException_1.NotFoundException(`Flashcard ${id} doesn't exist`);
             if (userId && result.userId != userId)
                 throw new NotFoundException_1.NotFoundException();
             return result;
@@ -80,6 +80,7 @@ let FlashCardService = class FlashCardService {
             const entity = yield this.getById(id, userId);
             entity.title = (0, StringUtils_1.switchNull)(request.title, entity.title);
             entity.description = (0, StringUtils_1.switchNull)(request.description, entity.description);
+            entity.masteredLevel = (0, StringUtils_1.switchNull)(request.masteredLevel, entity.masteredLevel);
             entity.imageUrls = (0, StringUtils_1.switchNull)((_a = request.imageUrls) === null || _a === void 0 ? void 0 : _a.map((i) => {
                 const m = { name: i.key, value: i.value };
                 return m;
@@ -103,9 +104,9 @@ let FlashCardService = class FlashCardService {
         });
     }
 };
-FlashCardService = __decorate([
+FlashcardService = __decorate([
     (0, typedi_1.Service)(),
-    __metadata("design:paramtypes", [FlashCardRepository_1.FlashCardRepository])
-], FlashCardService);
-exports.FlashCardService = FlashCardService;
-//# sourceMappingURL=FlashCardService.js.map
+    __metadata("design:paramtypes", [FlashcardRepository_1.FlashcardRepository])
+], FlashcardService);
+exports.FlashcardService = FlashcardService;
+//# sourceMappingURL=FlashcardService.js.map

@@ -9,17 +9,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.FlashCardRepository = void 0;
+exports.FlashcardRepository = void 0;
 const typedi_1 = require("typedi");
-const FlashCard_1 = __importDefault(require("../models/dao/FlashCard"));
+const Flashcard_1 = __importDefault(require("../models/dao/Flashcard"));
 const BaseRepository_1 = require("./BaseRepository");
-let FlashCardRepository = class FlashCardRepository extends BaseRepository_1.BaseRepository {
+let FlashcardRepository = class FlashcardRepository extends BaseRepository_1.BaseRepository {
     setModel() {
-        return FlashCard_1.default;
+        return Flashcard_1.default;
     }
 };
-FlashCardRepository = __decorate([
+FlashcardRepository = __decorate([
     (0, typedi_1.Service)()
-], FlashCardRepository);
-exports.FlashCardRepository = FlashCardRepository;
-//# sourceMappingURL=FlashCardRepository.js.map
+], FlashcardRepository);
+exports.FlashcardRepository = FlashcardRepository;
+//# sourceMappingURL=FlashcardRepository.js.map

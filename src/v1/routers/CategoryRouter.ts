@@ -20,7 +20,7 @@ export class CategoryRouter extends CommonRoutesConfig {
 
     this.router.all(``, AuthenticationMiddleware());
     this.router.all(`/:id`, AuthenticationMiddleware());
-    this.router.all(`/:id/flashCards`, AuthenticationMiddleware());
+    this.router.all(`/:id/flashcards`, AuthenticationMiddleware());
     this.router.get(
       ``,
       AuthorizationMiddleware(Permissions.Category.Read),      
@@ -49,9 +49,9 @@ export class CategoryRouter extends CommonRoutesConfig {
       controller.deleteById.bind(controller)
     );
     this.router.get(
-      `/:id/flashCards`,
+      `/:id/flashcards`,
       AuthorizationMiddleware(Permissions.Category.ReadById),
-      controller.getFlashCardsByCategoryId.bind(controller)
+      controller.getFlashcardsByCategoryId.bind(controller)
     );
   }
 }
